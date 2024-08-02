@@ -5,7 +5,7 @@ The app is available at https://nyt-connections-nine.vercel.app/.
 
 ## Images
 ![image](https://github.com/user-attachments/assets/9d121caa-4650-4fdb-8e67-a1af34ef81de)
-<img src="https://github.com/user-attachments/assets/8b88933d-f54b-4043-a582-2a237634bd71" width = 200px>
+<img src="https://github.com/user-attachments/assets/8b88933d-f54b-4043-a582-2a237634bd71" width = 100px>
 >
 
 ## Installation
