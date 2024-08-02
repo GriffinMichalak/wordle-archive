@@ -1,25 +1,38 @@
 <div class="main">  
-  <div class="board">
-    @for (row of [1,2,3,4,5,6]; track row) {
-      <div class="board-row">
-        @for (col of [1,2,3,4,5]; track col) {
-          <div id="tile{{(row - 1) * 5 + col}}" class="tile"></div>
-        }
-      </div>
-    }
-  </div>
 
-  <div class="keyboard">
-    @for (i of [0,1,2]; track i) {
-      <div class="keyboard-row">
-        @if (i === 2) { <div class="key enter-delete" (click)="click('enter')">Enter</div> }
+  @if (this.correctTiles === 5) {
+    <h1 style="text-align: center;">You Win!</h1>
+  }
 
-        @for (key of keyboard[i]; track key) {
-          <div (click)="click(key)" class="key">{{key}}</div>
-        }
+  @else if (this.currentRow === 7) {
+    <h1 style="text-align: center;">You Lose!</h1>
+    <p style="text-align: center;">The answer was {{this.WORD}}</p>
+  }
 
-        @if (i === 2) { <div class="key enter-delete" (click)="click('delete')">Delete</div> }
-      </div>
-    }
-  </div>
+  @else {
+    <div class="board">
+      @for (row of [1,2,3,4,5,6]; track row) {
+        <div class="board-row">
+          @for (col of [1,2,3,4,5]; track col) {
+            <div id="tile{{(row - 1) * 5 + col}}" class="tile"></div>
+          }
+        </div>
+      }
+    </div>
+  
+    <div class="keyboard">
+      @for (i of [0,1,2]; track i) {
+        <div class="keyboard-row">
+          @if (i === 2) { <div class="key enter-delete" (click)="click('enter')">Enter</div> }
+  
+          @for (key of keyboard[i]; track key) {
+            <div (click)="click(key)" class="key">{{key}}</div>
+          }
+  
+          @if (i === 2) { <div class="key enter-delete" (click)="click('delete')">Delete</div> }
+        </div>
+      }
+    </div>
+  }
+  
 </div>

@@ -13,10 +13,12 @@ export class AppComponent {
   title = 'wordle';
   WORD: string = 'FLAKE';
 
+  wordArr: string[]; 
   keyboard: string[][]; 
   guess: string[]; 
   pointer: number; 
   currentRow: number;
+  correctTiles: number; 
 
   constructor() {
 
@@ -29,6 +31,10 @@ export class AppComponent {
     this.guess = [];
     this.pointer = 0; 
     this.currentRow = 1; 
+    this.correctTiles = 0; 
+
+    this.wordArr = Array.from(this.WORD); 
+    console.log("Answer:", this.wordArr);
   }
 
   click(key: string): void {
@@ -58,17 +64,40 @@ export class AppComponent {
       }
     }
     
-    console.log(this.guess, this.pointer);
+    // console.log(this.guess, this.pointer);
   }
   
   enter() {
     console.log("YOU GUESSED: ", this.guess);
-    if (this.currentRow < 6) {
-      this.currentRow++;
+    let count = 0; 
+    this.correctTiles = 0; 
+
+    for (let i = this.pointer - 4; i <= this.pointer; i++) {
+      let curr = this.guess[count]; 
+      document.getElementById(`tile${i}`)!.style.color = 'white'; 
+
+      // Green
+      if (this.wordArr.includes(curr) && this.wordArr[count] === curr) {
+        document.getElementById(`tile${i}`)!.style.backgroundColor = '#6aaa64'; 
+        this.correctTiles++; 
+      }
+
+      // Yellow
+      else if (this.wordArr.includes(curr)) {
+        document.getElementById(`tile${i}`)!.style.backgroundColor = '#c9b458'; 
+      }
+
+      // Count
+      else {
+        document.getElementById(`tile${i}`)!.style.backgroundColor = '#787c7e'; 
+      }
+
+      count++; 
     }
-    else {
-      alert("you lose!");
-      location.reload();
+
+
+    if (this.currentRow < 7) {
+      this.currentRow++;
     }
     this.guess = []; 
   }
