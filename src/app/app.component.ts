@@ -31,37 +31,46 @@ export class AppComponent {
     this.currentRow = 1; 
   }
 
-
   click(key: string): void {
-    let min = (this.currentRow - 1) * 5;
-    let max = this.currentRow * 5; 
-    if (key != 'enter' && key != 'delete' && this.guess.length < max) {
-      this.guess.push(key); 
-      if (this.pointer < max) {
-        this.pointer++; 
-      }
-      document.getElementById(`tile${this.pointer}`)!.innerHTML = this.guess[this.guess.length-1]; 
-    }
-    else if (key == 'delete') {
-      this.guess.pop();
-      if (this.pointer > min) {
-        document.getElementById(`tile${this.pointer}`)!.innerHTML = ''; 
-        this.pointer--; 
-      }
-    }
-    else if (key == 'enter') {
-      if (this.guess.length === max) {
+    let min = 5 * this.currentRow - 5;
+    let max = 5 * this.currentRow; 
+    
+    // 1. Enter
+    if (key === 'enter') {
+      if (this.pointer === max) {
         this.enter(); 
       }
-      return; 
     }
+    // 2. Delete
+    else if (key === 'delete') {
+      if (this.pointer > min) {
+        document.getElementById(`tile${this.pointer}`)!.innerHTML = '';
+        this.pointer--; 
+        this.guess.pop(); 
+      }
+    }
+    // 3. Any other letter
+    else {
+      if (this.pointer < max) {
+        this.pointer++;
+        this.guess.push(key); 
+        document.getElementById(`tile${this.pointer}`)!.innerHTML = this.guess[this.guess.length - 1];
+      }
+    }
+    
     console.log(this.guess, this.pointer);
   }
-
+  
   enter() {
-    console.log("ENTER: ", this.guess);
+    console.log("YOU GUESSED: ", this.guess);
+    if (this.currentRow < 6) {
+      this.currentRow++;
+    }
+    else {
+      alert("you lose!");
+      location.reload();
+    }
     this.guess = []; 
-    this.currentRow++;
   }
 
 }
