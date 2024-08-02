@@ -4,10 +4,8 @@ This project is a clone of the popular game [Wordle](https://www.nytimes.com/gam
 The app is available at https://nyt-connections-nine.vercel.app/.
 
 ## Images
-<div style="display: flex; justify-content: space-between">
-  ![image](https://github.com/user-attachments/assets/e5fd2a5a-d038-45b2-8f00-0a4550922f2e)
+![image](https://github.com/user-attachments/assets/9d121caa-4650-4fdb-8e67-a1af34ef81de)
 
-</div>
 
 ## Installation
 1. Clone this repository: `git clone https://github.com/GriffinMichalak/nyt-connections`
