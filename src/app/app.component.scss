@@ -3,7 +3,7 @@
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
     margin-top: 50px;
-    border: 1px solid black;
+    // border: 1px solid black;
     margin-left: 30%;
     margin-right: 30%;
     height: 80vh;
@@ -88,16 +88,19 @@
 
 
 // Mobile Design
-//   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-//     .row, .found {
-//         width: 100%;
-//     }
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .main {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
 
-//     #buttons, #mistakes {
-//         width: 100% !important;
-//     }
+    .keyboard {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
 
-//     .playAgain {
-//         width: 0% !important;
-//     }
-//   }
+    .board {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+  }
